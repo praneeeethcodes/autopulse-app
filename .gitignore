@@ -1,0 +1,37 @@
+# Google Apps Script files
+.clasp.json
+.claspignore
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.log
+
+# Environment variables
+.env
+.env.local
+
+# Python (if adding backend later)
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# Node (if adding npm packages)
+node_modules/
+package-lock.json
+yarn.lock
