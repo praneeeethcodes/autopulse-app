@@ -133,3 +133,4 @@ feedbackForm.addEventListener('submit', async (e) => {
 
 // Initialize on page load
 initStarRating();
+// test commit comment
