@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoPulse - Delivery Feedback</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <rect width="40" height="40" rx="8" fill="#6366f1"/>
+                    <path d="M20 10L28 16V24L20 30L12 24V16L20 10Z" fill="white"/>
+                </svg>
+                <h1>AutoPulse</h1>
+            </div>
+            <p class="tagline">Smart Delivery Feedback System</p>
+        </header>
+
+        <main>
+            <div class="card">
+                <h2>How was your delivery experience?</h2>
+                <p class="subtitle">Your feedback helps us improve our service</p>
+
+                <form id="feedbackForm">
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required 
+                               placeholder="your.email@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Rate your delivery experience *</label>
+                        <div class="rating-container">
+                            <div class="stars" id="starRating">
+                                <span class="star" data-rating="1">★</span>
+                                <span class="star" data-rating="2">★</span>
+                                <span class="star" data-rating="3">★</span>
+                                <span class="star" data-rating="4">★</span>
+                                <span class="star" data-rating="5">★</span>
+                            </div>
+                            <span id="ratingText" class="rating-text">Select a rating</span>
+                        </div>
+                        <input type="hidden" id="rating" name="rating" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Was the package damaged?</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="packageDamaged" value="No" checked>
+                                <span>No</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="packageDamaged" value="Yes">
+                                <span>Yes</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Was the delivery on time?</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="onTime" value="Yes" checked>
+                                <span>Yes</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="onTime" value="No">
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="feedback">Additional Comments</label>
+                        <textarea id="feedback" name="feedback" rows="4" 
+                                  placeholder="Tell us more about your experience..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        Submit Feedback
+                    </button>
+                </form>
+
+                <div id="successMessage" class="success-message" style="display: none;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="10" stroke="#10b981" stroke-width="2"/>
+                        <path d="M8 12L11 15L16 9" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <div>
+                        <h3>Thank you for your feedback!</h3>
+                        <p id="successText"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-link">
+                <a href="admin.html">Admin Dashboard →</a>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 AutoPulse. Built for seamless delivery experiences.</p>
+        </footer>
+    </div>
+
+    <script src="js/feedback.js"></script>
+</body>
+</html>

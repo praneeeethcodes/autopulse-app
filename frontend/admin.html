@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoPulse - Admin Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <rect width="40" height="40" rx="8" fill="#6366f1"/>
+                    <path d="M20 10L28 16V24L20 30L12 24V16L20 10Z" fill="white"/>
+                </svg>
+                <h1>AutoPulse Admin</h1>
+            </div>
+            <a href="index.html" class="back-link">← Back to Feedback Form</a>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Feedback</h3>
+                <p class="stat-number" id="totalFeedback">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Average Rating</h3>
+                <p class="stat-number" id="avgRating">0.0</p>
+                <div class="stars-small" id="avgStars"></div>
+            </div>
+            <div class="stat-card critical">
+                <h3>Critical Issues</h3>
+                <p class="stat-number" id="criticalIssues">0</p>
+            </div>
+            <div class="stat-card high">
+                <h3>High Priority</h3>
+                <p class="stat-number" id="highPriority">0</p>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="feedback">All Feedback</button>
+            <button class="tab-btn" data-tab="issues">Issues</button>
+        </div>
+
+        <div class="tab-content active" id="feedback-tab">
+            <div class="table-container">
+                <h2>Recent Feedback</h2>
+                <div id="feedbackTable"></div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="issues-tab">
+            <div class="table-container">
+                <h2>Issue Reports</h2>
+                <div id="issuesTable"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
