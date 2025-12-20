@@ -7,7 +7,10 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const PORT = 3000;
+// Serve static frontend files
+app.use(express.static('public'));
+
+const PORT = process.env.PORT || 3000;
 
 // Email transporter configuration
 const transporter = nodemailer.createTransport({
