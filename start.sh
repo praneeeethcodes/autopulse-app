@@ -7,7 +7,7 @@ echo ""
 
 # Set environment variables (replace with your actual values)
 export SMTP_EMAIL="saipraneethjairam@gmail.com"
-export SMTP_PASSWORD="your_app_password_here"  # Replace with 16-char app password
+export SMTP_PASSWORD="fxox fuwy mtyq xtcs"
 
 # Start Backend (Node.js)
 echo "📧 Starting Backend (Node.js Email Server) on port 3000..."
@@ -20,10 +20,12 @@ cd ..
 # Wait for backend to start
 sleep 2
 
-# Start Frontend (Python HTTP Server)
-echo "🌐 Starting Frontend (HTTP Server) on port 8000..."
+# Start Frontend (Node.js HTTP Server)
+echo "🌐 Starting Frontend (Node.js HTTP Server) on port 8000..."
 cd frontend
-python -m http.server 8000 &
+# Install http-server if not already installed
+npm install -g http-server 2>/dev/null
+http-server . -p 8000 -c-1 &
 FRONTEND_PID=$!
 cd ..
 
