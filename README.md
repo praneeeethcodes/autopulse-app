@@ -52,7 +52,30 @@ EMAIL_CONFIG = {
 }
 ```
 
-**Note:** By default, emails are printed to console (development mode). To send real emails, uncomment the SMTP code in the `send_email()` function.
+### 🤖 AI-Powered Emails (Optional - Gemini Integration)
+
+AutoPulse can use Google's Gemini AI to generate personalized, context-aware email responses instead of static templates.
+
+**Setup:**
+1. Get a Gemini API key from [Google AI Studio](https://aistudio.google.com/app/apikey)
+2. Set environment variable:
+```powershell
+$env:GEMINI_API_KEY = "your-api-key-here"
+```
+3. Restart the backend server
+
+**How it works:**
+- **With API key:** Gemini generates smart, personalized emails based on customer feedback
+- **Without API key:** Falls back to standard email templates (no errors)
+
+**Note:** By default, emails are printed to console (development mode). To send real emails, set:
+```powershell
+$env:SEND_REAL_EMAILS = "true"
+$env:SMTP_EMAIL = "your-email@gmail.com"
+$env:SMTP_PASSWORD = "your-app-password"
+$env:MANAGER_EMAIL = "manager@company.com"
+$env:SUPPORT_EMAIL = "support@company.com"
+```
 
 ## 🚀 Running the Application
 

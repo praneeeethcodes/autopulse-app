@@ -43,6 +43,7 @@
         <div class="tabs">
             <button class="tab-btn active" data-tab="feedback">All Feedback</button>
             <button class="tab-btn" data-tab="issues">Issues</button>
+            <button class="tab-btn" data-tab="google">Google Form Responses</button>
         </div>
 
         <div class="tab-content active" id="feedback-tab">
@@ -56,6 +57,14 @@
             <div class="table-container">
                 <h2>Issue Reports</h2>
                 <div id="issuesTable"></div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="google-tab">
+            <div class="table-container">
+                <h2>Google Form Responses</h2>
+                <div id="googleSheetStatus" style="color:#6b7280; margin-bottom:12px; font-size:14px;">Loading responses from Google Sheets…</div>
+                <div id="googleTable"></div>
             </div>
         </div>
     </div>

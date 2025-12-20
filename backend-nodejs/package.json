@@ -1,0 +1,16 @@
+{
+  "name": "autopulse-smtp",
+  "version": "1.0.0",
+  "description": "Simple SMTP server for AutoPulse",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^4.18.2",
+    "googleapis": "^169.0.0",
+    "nodemailer": "^6.10.1"
+  }
+}

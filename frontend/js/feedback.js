@@ -1,5 +1,5 @@
-// API Base URL
-const API_URL = 'http://localhost:5000/api';
+// API Base URL (Node mailer service)
+const API_URL = 'http://localhost:3000/api';
 
 // DOM Elements
 const feedbackForm = document.getElementById('feedbackForm');
