@@ -1,0 +1,74 @@
+[
+  {
+    "timestamp": "2025-12-20T22:23:13.634Z",
+    "email": "saipraneethjairam@gmail.com",
+    "rating": 2,
+    "issue_type": "Low Rating",
+    "priority": "Critical",
+    "status": "Open",
+    "notes": "ah"
+  },
+  {
+    "timestamp": "2025-12-20T22:23:13.634Z",
+    "email": "saipraneethjairam@gmail.com",
+    "rating": 2,
+    "issue_type": "Package Damaged",
+    "priority": "Critical",
+    "status": "Open",
+    "notes": "ah"
+  },
+  {
+    "timestamp": "2025-12-21T09:21:06.600Z",
+    "email": "saipraneethjairam@gmail.com",
+    "rating": 2,
+    "issue_type": "Low Rating",
+    "priority": "High",
+    "status": "Open",
+    "notes": "s"
+  },
+  {
+    "timestamp": "2025-12-21T09:21:22.560Z",
+    "email": "saipraneethjairam@gmail.com",
+    "rating": 1,
+    "issue_type": "Low Rating",
+    "priority": "High",
+    "status": "Open",
+    "notes": "s"
+  },
+  {
+    "timestamp": "2025-12-24T06:44:59.883Z",
+    "email": "krishnaradha62385@gmail.com",
+    "rating": 1,
+    "issue_type": "Low Rating",
+    "priority": "Critical",
+    "status": "Open",
+    "notes": "HEY"
+  },
+  {
+    "timestamp": "2025-12-24T06:44:59.883Z",
+    "email": "krishnaradha62385@gmail.com",
+    "rating": 1,
+    "issue_type": "Package Damaged",
+    "priority": "Critical",
+    "status": "Open",
+    "notes": "HEY"
+  },
+  {
+    "timestamp": "2025-12-24T06:45:24.203Z",
+    "email": "krishnaradha62385@gmail.com",
+    "rating": 5,
+    "issue_type": "Package Damaged",
+    "priority": "Critical",
+    "status": "Open",
+    "notes": "hM"
+  },
+  {
+    "timestamp": "2025-12-24T06:46:01.799Z",
+    "email": "krishnaradha62385@gmail.com",
+    "rating": 3,
+    "issue_type": "Package Damaged",
+    "priority": "Critical",
+    "status": "Open",
+    "notes": "H"
+  }
+]
