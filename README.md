@@ -258,5 +258,3 @@ git push -u origin feature/my-feature
 ---
 
 **⭐ Star this repo if you find it useful!**
-
-Built with ❤️ for hackathons and real-world applications
