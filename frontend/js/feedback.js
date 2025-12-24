@@ -1,7 +1,12 @@
-// API Base URL (Node mailer service)
+/* ===============================
+   API CONFIG (PERMANENT FIX)
+   Frontend (5500) → Backend (3000)
+================================ */
 const API_URL = 'http://localhost:3000/api';
 
-// DOM Elements
+/* ===============================
+   DOM ELEMENTS
+================================ */
 const feedbackForm = document.getElementById('feedbackForm');
 const starRating = document.getElementById('starRating');
 const ratingInput = document.getElementById('rating');
@@ -10,40 +15,36 @@ const successMessage = document.getElementById('successMessage');
 const successText = document.getElementById('successText');
 const submitBtn = document.getElementById('submitBtn');
 
-// Rating state
+/* ===============================
+   STATE
+================================ */
 let selectedRating = 0;
 
-// Initialize star rating
+/* ===============================
+   STAR RATING LOGIC
+================================ */
 function initStarRating() {
     const stars = document.querySelectorAll('.star');
-    
+
     stars.forEach(star => {
         star.addEventListener('click', () => {
-            selectedRating = parseInt(star.dataset.rating);
+            selectedRating = Number(star.dataset.rating);
             ratingInput.value = selectedRating;
             updateStars();
             updateRatingText();
         });
 
         star.addEventListener('mouseenter', () => {
-            const hoverRating = parseInt(star.dataset.rating);
-            highlightStars(hoverRating);
+            highlightStars(Number(star.dataset.rating));
         });
     });
 
-    starRating.addEventListener('mouseleave', () => {
-        updateStars();
-    });
+    starRating.addEventListener('mouseleave', updateStars);
 }
 
 function highlightStars(rating) {
-    const stars = document.querySelectorAll('.star');
-    stars.forEach((star, index) => {
-        if (index < rating) {
-            star.classList.add('active');
-        } else {
-            star.classList.remove('active');
-        }
+    document.querySelectorAll('.star').forEach((star, i) => {
+        star.classList.toggle('active', i < rating);
     });
 }
 
@@ -52,17 +53,20 @@ function updateStars() {
 }
 
 function updateRatingText() {
-    const texts = {
+    const labels = {
         1: 'Poor',
         2: 'Fair',
         3: 'Good',
         4: 'Very Good',
         5: 'Excellent'
     };
-    ratingText.textContent = selectedRating > 0 ? texts[selectedRating] : 'Select a rating';
+    ratingText.textContent =
+        selectedRating > 0 ? labels[selectedRating] : 'Select a rating';
 }
 
-// Form submission
+/* ===============================
+   FORM SUBMISSION (BULLETPROOF)
+================================ */
 feedbackForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -71,65 +75,71 @@ feedbackForm.addEventListener('submit', async (e) => {
         return;
     }
 
-    // Get form data
+    const packageDamagedEl =
+        document.querySelector('input[name="packageDamaged"]:checked');
+    const onTimeEl =
+        document.querySelector('input[name="onTime"]:checked');
+
+    if (!packageDamagedEl || !onTimeEl) {
+        alert('Please answer all questions');
+        return;
+    }
+
     const formData = {
         email: document.getElementById('email').value.trim(),
         rating: selectedRating,
-        packageDamaged: document.querySelector('input[name="packageDamaged"]:checked').value,
-        onTime: document.querySelector('input[name="onTime"]:checked').value,
+        packageDamaged: packageDamagedEl.value,
+        onTime: onTimeEl.value,
         feedback: document.getElementById('feedback').value.trim()
     };
 
-    // Disable button
     submitBtn.disabled = true;
     submitBtn.textContent = 'Submitting...';
 
     try {
         const response = await fetch(`${API_URL}/feedback`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
         });
 
         const data = await response.json();
 
-        if (response.ok) {
-            // Show success message
-            let message = 'We appreciate your feedback!';
-            
-            if (formData.rating >= 4) {
-                message = `Thank you! Check your email for a special discount code: SAVE10`;
-            } else if (formData.rating <= 2) {
-                message = 'We\'re sorry for your experience. Our team will contact you shortly.';
-            }
-
-            successText.textContent = message;
-            feedbackForm.style.display = 'none';
-            successMessage.style.display = 'flex';
-
-            // Reset form after 5 seconds
-            setTimeout(() => {
-                feedbackForm.reset();
-                selectedRating = 0;
-                updateStars();
-                updateRatingText();
-                feedbackForm.style.display = 'block';
-                successMessage.style.display = 'none';
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Submit Feedback';
-            }, 5000);
-        } else {
-            throw new Error(data.error || 'Failed to submit feedback');
+        if (!response.ok) {
+            throw new Error(data.error || 'Server error');
         }
-    } catch (error) {
-        console.error('Error:', error);
+
+        let message = 'We appreciate your feedback!';
+        if (formData.rating >= 4) {
+            message = 'Thank you! Check your email for a discount code: SAVE10';
+        } else if (formData.rating <= 2) {
+            message = 'We’re sorry for your experience. Our team will contact you.';
+        }
+
+        successText.textContent = message;
+        feedbackForm.style.display = 'none';
+        successMessage.style.display = 'flex';
+        successMessage.scrollIntoView({ behavior: 'smooth' });
+
+        setTimeout(() => {
+            feedbackForm.reset();
+            selectedRating = 0;
+            updateStars();
+            updateRatingText();
+            feedbackForm.style.display = 'block';
+            successMessage.style.display = 'none';
+        }, 5000);
+
+    } catch (err) {
+        console.error('Submit error:', err);
         alert('Failed to submit feedback. Please try again.');
+    } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Submit Feedback';
     }
 });
 
-// Initialize on page load
+/* ===============================
+   INIT
+================================ */
 initStarRating();
